@@ -16,8 +16,8 @@
   --present: #ffc933;
   --absent: #0b1141;
 
-  --font-display: 'Bricolage Grotesque', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
-  --font-body: 'Instrument Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque Variable', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Instrument Sans Variable', 'Segoe UI', system-ui, sans-serif;
 
   color-scheme: dark;
 }
@@ -56,6 +56,7 @@ body::before {
   mask-image: linear-gradient(90deg, #000 0, rgba(0, 0, 0, 0.4) calc(50% - 290px), rgba(0, 0, 0, 0.4) calc(50% + 290px), #000 100%);
 }
 button {
+  touch-action: manipulation; /* no double-tap zoom */
   font: inherit;
   color: inherit;
 }

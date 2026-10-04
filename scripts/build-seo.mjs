@@ -17,7 +17,7 @@ function page(path, title, desc, body) {
   urls.push(path);
   const html = `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${title}</title><meta name="description" content="${desc}"><link rel="canonical" href="${SITE}${path}">
-<meta property="og:title" content="${title}"><meta property="og:description" content="${desc}"><meta property="og:url" content="${SITE}${path}"><meta property="og:type" content="article">
+<meta property="og:title" content="${title}"><meta property="og:description" content="${desc}"><meta property="og:url" content="${SITE}${path}"><meta property="og:type" content="article"><meta property="og:image" content="${SITE}/og.png"><meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"><style>${css}</style></head><body><main>
 <p><a href="/">Wordwise</a></p>${body}
 <p><a class="play" href="/">Play Wordwise free</a></p></main></body></html>`;
@@ -50,9 +50,18 @@ page('/how-to-play', 'How to Play Wordwise: Rules, Tips and Strategy',
 <h2>Hints</h2><p>Stuck? Ask for a short clue, reveal one letter, or cross out letters that are not in the word.</p>
 <h2>Tips</h2><ul><li>Start with a word that has common letters like E, A, R, S and T.</li><li>Use a second word with different letters to find more clues.</li><li>Repeated letters count: a word can have two Es.</li></ul>${lenLinks}`);
 
+page('/privacy', 'Privacy Policy | Wordwise', 'How Wordwise handles your data: no accounts, no tracking of personal details, game progress stored only on your device.',
+  `<h1>Privacy Policy</h1><p>Last updated: October 2026.</p>
+<p>Wordwise does not ask you to create an account and does not collect your name, email or any personal details.</p>
+<h2>Data stored on your device</h2><p>Your game progress, statistics and settings are saved in your browser's local storage. This data never leaves your device. Clearing your browser data removes it.</p>
+<h2>Analytics and advertising</h2><p>We may use privacy-friendly analytics to count visits, and we may show ads in the future. Ad and analytics providers can use cookies or similar technologies; if we add them we will update this page and ask for consent where the law requires it.</p>
+<h2>Hosting</h2><p>The site is hosted on Vercel, which may keep standard server logs such as IP address and browser type for security and reliability.</p>
+<h2>Children</h2><p>Wordwise is a general audience word game and does not knowingly collect data from children.</p>
+<h2>Contact</h2><p>Questions about this policy? Contact the site owner through the details on the site once published.</p>${lenLinks}`);
+
 const idx = new URL('index.html', DIST);
 let home = fs.readFileSync(idx, 'utf8').replaceAll('__SITE__', SITE);
-const footer = `<nav style="max-width:560px;margin:0 auto;padding:24px 16px 40px;color:#aab4f3;font-size:.9rem"><p>Free word guessing game. Browse word lists:</p>${LENGTHS.map((n) => `<a style="color:#ffc933;margin-right:12px" href="/${n}-letter-words">${n} letter words</a>`).join('')}<a style="color:#ffc933" href="/how-to-play">How to play</a></nav>`;
+const footer = `<nav style="max-width:560px;margin:0 auto;padding:24px 16px 40px;color:#aab4f3;font-size:.9rem"><p>Free word guessing game. Browse word lists:</p>${LENGTHS.map((n) => `<a style="color:#ffc933;margin-right:12px" href="/${n}-letter-words">${n} letter words</a>`).join('')}<a style="color:#ffc933;margin-right:12px" href="/how-to-play">How to play</a><a style="color:#ffc933" href="/privacy">Privacy</a></nav>`;
 fs.writeFileSync(idx, home.replace('</body>', `${footer}</body>`));
 
 fs.writeFileSync(new URL('sitemap.xml', DIST), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `<url><loc>${SITE}${u}</loc></url>`).join('\n')}\n</urlset>\n`);

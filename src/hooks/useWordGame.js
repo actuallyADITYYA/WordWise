@@ -136,8 +136,7 @@ export function useWordGame() {
       if (document.querySelector('dialog[open]')) return;
       const t = e.target;
       if (e.key === 'Enter') {
-        // A keyboard-focused button/link keeps Enter for itself; mouse-clicked ones must not swallow it.
-        if (t instanceof HTMLElement && t.closest('button, a') && t.matches(':focus-visible')) return;
+        if (t instanceof HTMLElement && t.closest('button, a')) return;
         e.preventDefault();
         submit();
       } else if (e.key === 'Backspace') {
@@ -146,8 +145,14 @@ export function useWordGame() {
         typeLetter(e.key.toLowerCase());
       }
     };
+    // Mouse clicks shouldn't leave a button focused, or it would swallow Enter (Tab still focuses).
+    const noFocus = (e) => e.target instanceof Element && e.target.closest('button') && e.preventDefault();
     window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    window.addEventListener('mousedown', noFocus);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      window.removeEventListener('mousedown', noFocus);
+    };
   }, [submit, backspace, typeLetter]);
 
   // Hints

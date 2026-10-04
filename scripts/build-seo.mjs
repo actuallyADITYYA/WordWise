@@ -2,7 +2,7 @@
 // sitemap, robots) and fills the site URL into index.html. SITE_URL overrides the default.
 import fs from 'node:fs';
 
-const SITE = (process.env.SITE_URL || 'https://wordwise-mocha.vercel.app').replace(/\/$/, '');
+const SITE = (process.env.SITE_URL || 'https://wordwise-game.vercel.app').replace(/\/$/, '');
 const DIST = new URL('../dist/', import.meta.url);
 const LENGTHS = [5, 6, 7, 8];
 const LETTERS = 'abcdefghijklmnopqrstuvwxyz'.split('');

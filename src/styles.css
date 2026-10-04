@@ -282,7 +282,7 @@ button {
 /* ───────── Toast ───────── */
 .toast-layer {
   position: fixed;
-  top: max(64px, calc(env(safe-area-inset-top) + 56px));
+  top: max(122px, calc(env(safe-area-inset-top) + 114px)); /* below the length picker, above the board */
   left: 0;
   right: 0;
   display: flex;
@@ -468,7 +468,8 @@ button {
   justify-content: center;
   gap: 8px;
   min-height: 46px;
-  padding: 0 20px;
+  padding: 0 18px;
+  white-space: nowrap;
   border-radius: 999px;
   border: 2px solid transparent;
   font-weight: 600;
@@ -690,7 +691,7 @@ button {
   flex-wrap: wrap;
 }
 .modal-actions .btn {
-  flex: 1 1 140px;
+  flex: 1 1 160px;
 }
 
 /* ───────── Motion ───────── */

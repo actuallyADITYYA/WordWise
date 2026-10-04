@@ -136,7 +136,8 @@ export function useWordGame() {
       if (document.querySelector('dialog[open]')) return;
       const t = e.target;
       if (e.key === 'Enter') {
-        if (t instanceof HTMLElement && t.closest('button, a')) return;
+        // A keyboard-focused button/link keeps Enter for itself; mouse-clicked ones must not swallow it.
+        if (t instanceof HTMLElement && t.closest('button, a') && t.matches(':focus-visible')) return;
         e.preventDefault();
         submit();
       } else if (e.key === 'Backspace') {

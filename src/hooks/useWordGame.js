@@ -86,9 +86,9 @@ export function useWordGame() {
       if (status === 'playing') return note && flash(note, 2200);
       if (status === 'won') {
         setCelebrate(true);
-        flash(winLine(guessCount), 1400);
+        flash(winLine(guessCount), 2200);
       }
-      later(() => setShowResult(true), status === 'won' ? 1300 : 400);
+      later(() => setShowResult(true), status === 'won' ? 2300 : 400);
     },
     [flash],
   );

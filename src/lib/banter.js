@@ -13,6 +13,9 @@ const LINES = {
   zeroThree: ['Three tries, nothing. Are you doing this on purpose?', 'Still zero? The word is laughing.', 'Impressive, in a way.', 'Three misses. The word is not even nervous.', 'Are you guessing with your eyes closed?', 'At this point it is a talent.', 'The word has left the building.', 'Zero for three. Take a hint, champ.'],
   close: ['So close!', 'One letter away!', 'Almost there!', 'You can taste it!', 'Just one tile left to fix!', 'Do not stop now!', 'The finish line is right there.', 'So near, yet so yellow.'],
   struggling: ['Tough one, huh?', 'Try a hint, no shame.', 'This word is being difficult.', 'Deep breath. You have got this.', 'The hint button is lonely, you know.', 'Plot twist: it is a real word.', 'Maybe think of a totally different word?', 'Brain buffering...'],
+  warm: ['Getting warmer!', 'Good, keep going!', 'Some progress there.', 'Nice, you are onto something.', 'Not bad at all!', 'Building a picture now.', 'Solid guess, keep it up!', 'Warm, very warm.'],
+  shuffle: ['Right letters, wrong spots. Shuffle them!', 'The letters are there, just rearrange.', 'Close! Mix up the positions.', 'Yellow means move it around.', 'Good letters, bad seating plan.', 'Right guests, wrong chairs!', 'Almost. Try swapping things around.', 'Letters found, places lost.'],
+  miss: ['Nope, not that one.', 'Cold. Try something different.', 'Not even close. Try again!', 'Swing and a miss.', 'That one is a dud.', 'Chilly. Change tactics!', 'Hmm, no. Next!', 'The word is unimpressed.'],
 };
 
 const WIN = [
@@ -27,7 +30,7 @@ const WIN = [
 
 export const winLine = (n) => pick(WIN[Math.min(n - 1, WIN.length - 1)]);
 
-// Reaction after a non-winning guess, or null to stay quiet.
+// Reaction after a non-winning guess; always has something to say.
 export function banter(guesses, answer) {
   const n = guesses.length;
   const last = evaluate(guesses[n - 1], answer);
@@ -40,5 +43,7 @@ export function banter(guesses, answer) {
   if (n >= 3 && !anyHit) return pick(LINES.zeroThree);
   if (greens === answer.length - 1) return pick(LINES.close);
   if (n >= 4 && greens === 0) return pick(LINES.struggling);
-  return null;
+  if (greens > 0) return pick(LINES.warm);
+  return pick(anyHitLast(last) ? LINES.shuffle : LINES.miss);
 }
+const anyHitLast = (ev) => ev.some((s) => s !== 'absent');

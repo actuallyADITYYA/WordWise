@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="360" viewBox="0 0 360 360" fill="none" stroke="#ffc933" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- open book -->
+  <g transform="translate(22 28) rotate(-8 30 20)"><path d="M30 10C22 4 10 4 2 8v32c8-4 20-4 28 2 8-6 20-6 28-2V8c-8-4-20-4-28 2zM30 10v32"/></g>
+  <!-- pencil -->
+  <g transform="translate(150 20) rotate(35 10 30)"><path d="M4 56l2-12L36 8l8 6L14 50zM30 14l8 6M6 44l8 6M4 56l10-6"/></g>
+  <!-- lightbulb -->
+  <g transform="translate(262 24) rotate(10 20 30)"><path d="M20 4a16 16 0 0 0-8 30v8h16v-8A16 16 0 0 0 20 4zM14 48h12M16 54h8M20 -4v-2M34 2l3-3M6 2L3-1"/></g>
+  <!-- letter tile -->
+  <g transform="translate(40 138) rotate(12 24 24)"><rect x="2" y="2" width="44" height="44" rx="8"/><path d="M14 36l10-24 10 24M17 29h14"/></g>
+  <!-- magnifier -->
+  <g transform="translate(150 140) rotate(-15 24 24)"><circle cx="20" cy="20" r="15"/><path d="M31 31l16 16M13 18a8 8 0 0 1 7-7"/></g>
+  <!-- speech bubble -->
+  <g transform="translate(262 146) rotate(-6 24 20)"><path d="M4 6h44a2 2 0 0 1 2 2v26a2 2 0 0 1-2 2H22l-12 10V36H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zM12 16h28M12 25h18"/></g>
+  <!-- star -->
+  <g transform="translate(30 258) rotate(-10 20 20)"><path d="M22 2l6 14 15 1-12 10 4 15-13-8-13 8 4-15L1 17l15-1z"/></g>
+  <!-- graduation cap -->
+  <g transform="translate(142 262) rotate(8 30 20)"><path d="M30 6L2 18l28 12 28-12zM14 24v12c8 8 24 8 32 0V24M58 18v16"/></g>
+  <!-- puzzle / abc -->
+  <g transform="translate(262 262) rotate(14 24 24)"><path d="M6 6h14a6 6 0 1 1 12 0h14v14a6 6 0 1 0 0 12v14H32a6 6 0 1 1-12 0H6V32a6 6 0 1 0 0-12z"/></g>
+  <!-- small sparkles & dots -->
+  <path d="M110 100v10M105 105h10M236 232v10M231 237h10M96 222l.1 0M330 112l.1 0M222 112l.1 0M110 330l.1 0M330 232l.1 0M230 28l.1 0M100 180l.1 0" stroke-width="4"/>
+  <path d="M320 330c6-8 14-8 20 0M322 60c6-8 14-8 20 0" />
+</svg>
